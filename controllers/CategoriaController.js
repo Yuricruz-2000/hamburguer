@@ -9,31 +9,39 @@ import Categoria from "../models/Categoria.js";
       res.status(500).json({ error: error.message });
     }
    },
-  findAll: async (req, res) => { 
-    try
-    {
-      const categorias = await Categoria.findAll();
+  findAll: async (req, res) => {
+    try {
+      const categorias = await Categoria.findAll({
+        
+        include: [
+          { association: 'produtos' } 
+        ]
+      });
+
       if (categorias.length === 0) {
-        throw new Error('Nenhuma categoria encontrada');
+        return res.status(404).json({ message: 'Nenhuma categoria encontrada' });
       }
       res.status(200).json(categorias);
-    }catch (error) {
+    } catch (error) {
       res.status(500).json({ error: error.message });
     }
-   },
+  },
 
-  findById: async (req, res) => { 
-    try{
-        const categoria = await Categoria.findByPk(req.params.id);
-        if (categoria) {
-          res.status(200).json(categoria);
-        } else {
-          res.status(404).json({ error: 'Categoria nao encontrada' });
-        }
-    }catch(error){
+  findById: async (req, res) => {
+    try {
+      const categoria = await Categoria.findByPk(req.params.id, {
+        include: [{ association: 'produtos' }]
+      });
+
+      if (categoria) {
+        res.status(200).json(categoria);
+      } else {
+        res.status(404).json({ error: 'Categoria não encontrada' });
+      }
+    } catch (error) {
       res.status(500).json({ error: error.message });
     }
-   },
+  },
   update: async (req, res) => {
     try{
         const categoria = await Categoria.findByPk(req.params.id);
