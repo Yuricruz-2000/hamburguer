@@ -23,7 +23,8 @@ export default {
         onDelete: 'CASCADE'
       },
       createdAt: { type: Sequelize.DATE, allowNull: false },
-      updatedAt: { type: Sequelize.DATE, allowNull: false }
+      updatedAt: { type: Sequelize.DATE, allowNull: false },
+      deletedAt: { type: Sequelize.DATE, allowNull: false }
     });
   },
 

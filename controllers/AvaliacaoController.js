@@ -6,7 +6,7 @@ const AvaliacaoController = {
     try {
       const { nota, pedidoId } = req.body;
 
-      if (nota < 1 || nota > 5) {
+     if (!nota || nota < 1 || nota > 5) {
         return res.status(400).json({ error: "A nota deve estar entre 1 e 5." });
       }
 
