@@ -4,6 +4,7 @@ import pedidoRoutes from './routes/pedidoRoutes.js';
 import produtoRoutes from './routes/produtosRoutes.js';
 import avaliacaoRoutes from './routes/avaliacaoRoutes.js';
 import entregaRoutes from './routes/entregaRoutes.js';
+import './models/index.js';
 
 const app = express();
 

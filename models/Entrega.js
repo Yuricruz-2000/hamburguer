@@ -3,11 +3,8 @@ import { DataTypes, Model } from "sequelize";
 
 export default class Entrega extends Model {
     static associate(models) {
-        Entrega.belongsTo(models.Pedido, {
-            foreignKey: 'pedido_id',
-            as: 'pedido'
-        })
-    }
+  this.belongsTo(models.Pedido, { foreignKey: 'pedido_id', as: 'pedido' });
+}
 }
 
 Entrega.init({

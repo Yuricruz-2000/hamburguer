@@ -1,4 +1,6 @@
+import Entrega from "../models/Entrega.js";
 import Pedido from "../models/Pedido.js";
+import Avaliacao from "../models/Avaliacao.js";
 
 const PedidoController = {
     create : async (req, res) =>{
@@ -15,9 +17,9 @@ const PedidoController = {
       const pedidos = await Pedido.findAll({
 
         include: [
-          { association: 'entrega' }, 
-          { association: 'avaliacao' } 
-        ]
+        { model: Entrega, as: 'entrega' },  // O 'as' tem de ser igual ao do Model Pedido
+        { model: Avaliacao, as: 'avaliacao' } // O 'as' tem de ser igual ao do Model Pedido
+      ]
       });
 
       if (pedidos.length === 0) {
@@ -33,8 +35,7 @@ const PedidoController = {
     try {
       const pedido = await Pedido.findByPk(req.params.id, {
         include: [
-          { association: 'entrega' },
-          { association: 'avaliacao' }
+          {model: Entrega, include: [{model: Avaliacao}]}
         ]
       });
 

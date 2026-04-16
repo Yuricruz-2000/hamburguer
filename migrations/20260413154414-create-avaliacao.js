@@ -15,7 +15,7 @@ export default {
         allowNull: false
 
       },
-      pedidoId: {
+      pedido_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'pedidos', key: 'id' }, 

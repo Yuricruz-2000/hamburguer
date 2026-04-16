@@ -2,12 +2,14 @@ import sequelize from "./Database.js";
 import { DataTypes, Model } from "sequelize";
 
 export default class Pedido extends Model{
-    static associate(models){
-        Pedido.hasOne(models.Entrega, {
-            foreignKey: 'pedido_id',
-            as: 'entrega'
-        })
-    }
+   // No models/Pedido.js
+static associate(models) {
+  // Se a migration de entrega tem pedido_id (com underline):
+  this.hasOne(models.Entrega, { foreignKey: 'pedido_id', as: 'entrega' });
+
+  // Se a migration de avaliacao tem pedidoId (sem underline - verifique isso!):
+  this.hasOne(models.Avaliacao, { foreignKey: 'pedido_id', as: 'avaliacao' });
+}
 };
 
 Pedido.init({

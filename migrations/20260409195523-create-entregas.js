@@ -21,7 +21,7 @@ export default {
       },
       createdAt: { type: Sequelize.DATE },
       updatedAt: { type: Sequelize.DATE },
-      deletedAt: { type: Sequelize.DATE }
+      deletedAt: { type: Sequelize.DATE, allowNull: true }
     })
   },
 
