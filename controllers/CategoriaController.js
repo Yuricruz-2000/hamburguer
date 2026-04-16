@@ -1,4 +1,5 @@
 import Categoria from "../models/Categoria.js";
+import Produto from "../models/Produto.js";
 
  const CategoriaController = {
   create: async (req, res) => {
@@ -14,7 +15,7 @@ import Categoria from "../models/Categoria.js";
       const categorias = await Categoria.findAll({
         
         include: [
-          { association: 'produtos' } 
+          {model: produtos} 
         ]
       });
 
@@ -30,7 +31,7 @@ import Categoria from "../models/Categoria.js";
   findById: async (req, res) => {
     try {
       const categoria = await Categoria.findByPk(req.params.id, {
-        include: [{ association: 'produtos' }]
+        include: [{ model: produtos}]
       });
 
       if (categoria) {
