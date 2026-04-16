@@ -12,8 +12,8 @@ export default {
       },
       nota: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: { min: 1, max: 5 }
+        allowNull: false
+
       },
       pedidoId: {
         type: Sequelize.INTEGER,
@@ -24,7 +24,19 @@ export default {
       },
       createdAt: { type: Sequelize.DATE, allowNull: false },
       updatedAt: { type: Sequelize.DATE, allowNull: false },
-      deletedAt: { type: Sequelize.DATE, allowNull: false }
+      deletedAt: { type: Sequelize.DATE, allowNull: true } 
+    });
+
+
+    await queryInterface.addConstraint('avaliacoes', {
+      fields: ['nota'],
+      type: 'check',
+      name: 'check_nota_range',
+      where: {
+        nota: {
+          [Sequelize.Op.between]: [1, 5]
+        }
+      }
     });
   },
 
