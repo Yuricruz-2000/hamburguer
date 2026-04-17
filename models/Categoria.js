@@ -5,7 +5,7 @@ export default class Categoria extends Model {
 
     static associate (models){
         Categoria.hasMany(models.Produto,{
-            foreignKey: 'categoriaId',
+            foreignKey: 'categoria_id',
             as : 'produtos'
         })
     }
