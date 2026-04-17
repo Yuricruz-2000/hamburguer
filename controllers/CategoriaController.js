@@ -29,7 +29,7 @@ import Produto from "../models/Produto.js";
   findById: async (req, res) => {
     try {
       const categoria = await Categoria.findByPk(req.params.id, {
-        include: [{ model: produtos}]
+        include: [{ model: Produto, as: 'produtos' }]
       });
 
       if (categoria) {
