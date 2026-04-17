@@ -1,4 +1,5 @@
 import Produto from '../models/Produto.js';
+import Categoria from '../models/Categoria.js';
 
 export const criar = async (req, res) => {
     try {
@@ -11,7 +12,9 @@ export const criar = async (req, res) => {
 
 export const listar = async (req, res) => {
     try {
-        const produtos = await Produto.findAll();
+       const produtos = await Produto.findAll({
+            include: [{ model: Categoria, as: 'categoria' }]
+        });     
         res.status(200).json(produtos);
     } catch (error) {
         res.status(500).json({ erro: error.message });
