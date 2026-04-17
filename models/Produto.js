@@ -4,7 +4,7 @@ import sequelize from "./Database.js";
 export default class Produto extends Model {
   static associate(models) {
     Produto.belongsTo(models.Categoria, {
-      foreignKey: 'categoriaId',
+      foreignKey: 'categoria_id',
       as: 'categoria'
     });
   }
@@ -27,7 +27,7 @@ Produto.init({
     type: DataTypes.BOOLEAN,
     defaultValue: true
   },
-  categoriaId: { type: DataTypes.INTEGER }
+  categoria_id: { type: DataTypes.INTEGER, allowNull: false }
 }, {
   sequelize,
   modelName: 'Produto',
