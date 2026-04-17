@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "yuricruz2017.",
-    "database": "hamburguer",
+    "password": "Batata@123",
+    "database": "foodservice",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "yuricruz2017.",
-    "database": "hamburguer",
+    "password": null,
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
